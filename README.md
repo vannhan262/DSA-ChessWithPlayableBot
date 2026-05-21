@@ -31,9 +31,8 @@ Because this is a DSA project, the engine avoids external game libraries and is 
 * Java Development Kit (JDK) 8 or higher installed on your machine.
 
 ### Installation & Execution
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/yourusername/code-strike-chess.git](https://github.com/yourusername/code-strike-chess.git)
+1. Install code from github
+
 2. Open the project in your preferred IDE (Visual Studio Code, IntelliJ, Eclipse).
 
 3. Locate the main entry file (src/main/main.java or similar).
