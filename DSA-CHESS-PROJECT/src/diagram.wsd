@@ -1,0 +1,70 @@
+@startuml
+' --- MAGIC LAYOUT FIXES ---
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+skinparam linetype ortho
+skinparam nodesep 50
+skinparam ranksep 50
+
+' Define Packages and Classes
+package main {
+    class main {
+        + main(args: String[])
+    }
+    class GamePanel {
+        + startGame()
+        + update()
+    }
+    class Board
+    class Mouse
+    class Keyboard
+    class Sound
+    enum Type
+}
+
+package computer {
+    class BotChess {
+        + getBestMove()
+        - minimax()
+    }
+}
+
+package "piece package" {
+    abstract class piece {
+        + col: int
+        + row: int
+        + type: Type
+        + canMove(): boolean
+    }
+    class Pawn
+    class Rook
+    class Knight
+    class Bishop
+    class Queen
+    class King
+}
+
+' --- RELATIONSHIPS WITH DIRECTION HINTS ---
+
+' Main creates GamePanel (Draw left to right)
+main .right.> GamePanel : creates >
+
+' GamePanel contains everything (Force them to draw underneath GamePanel)
+GamePanel *-down- Board
+GamePanel *-down- Mouse
+GamePanel *-down- Keyboard
+GamePanel *-down- Sound
+GamePanel *-down- BotChess
+
+' GamePanel uses pieces (Draw to the right)
+GamePanel o-right- piece
+
+' Show Inheritance (Force the specific pieces to draw underneath the abstract piece)
+piece <|-down- Pawn
+piece <|-down- Rook
+piece <|-down- Knight
+piece <|-down- Bishop
+piece <|-down- Queen
+piece <|-down- King
+
+@enduml
